@@ -1,0 +1,12 @@
+{
+  "sources": [
+    {
+      "name": "Worldwide by country",
+      "url": "https://iptv-org.github.io/iptv/index.country.m3u"
+    },
+    {
+      "name": "By category",
+      "url": "https://iptv-org.github.io/iptv/index.category.m3u"
+    }
+  ]
+}

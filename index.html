@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0b0f14">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Free TV">
+  <meta name="description" content="Free live TV from around the world. No account, no tracking.">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" type="image/png" href="icons/icon-192.png">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+  <link rel="stylesheet" href="style.css">
+  <title>Free TV</title>
+</head>
+<body>
+  <header>
+    <div class="brand">
+      <span class="logo">▶</span>
+      <h1>Free TV</h1>
+    </div>
+    <div id="now" class="now">Pick a channel</div>
+  </header>
+
+  <main>
+    <section class="stage">
+      <video id="v" controls playsinline webkit-playsinline x-webkit-airplay="allow"></video>
+      <div id="msg" class="msg">
+        <div class="spinner"></div>
+        <p>Loading channels…</p>
+      </div>
+      <div id="overlay" class="overlay hidden">
+        <button id="retryBtn" class="btn">Try again</button>
+      </div>
+    </section>
+
+    <aside class="side">
+      <div class="tools">
+        <div class="search-wrap">
+          <input id="q" type="search" placeholder="Search channels…" aria-label="Search channels" autocomplete="off">
+          <button id="clearSearch" class="clear-btn hidden" aria-label="Clear search">×</button>
+        </div>
+        <select id="cat" aria-label="Category or country"></select>
+      </div>
+
+      <div class="tabs">
+        <button class="tab active" data-tab="all">All</button>
+        <button class="tab" data-tab="favs">★ Favorites</button>
+        <button class="tab" data-tab="recent">Recent</button>
+      </div>
+
+      <ul id="list" role="listbox" aria-label="Channels"></ul>
+    </aside>
+  </main>
+
+  <footer class="footer">
+    <span id="stats">—</span>
+    <span class="hint">Public streams · No account · No tracking</span>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/hls.js@1.5.17/dist/hls.min.js"></script>
+  <script src="app.js"></script>
+  <script>
+    if ("serviceWorker" in navigator) {
+      addEventListener("load", () => navigator.serviceWorker.register("sw.js").catch(() => {}));
+    }
+  </script>
+</body>
+</html>
